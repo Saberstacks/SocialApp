@@ -1,0 +1,14 @@
+/* styles.css */
+
+/* Custom font */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Animate post cards on hover */
+.post-card {
+    transition: transform 0.3s ease-in-out;
+}
+.post-card:hover {
+    transform: scale(1.02);
+}
