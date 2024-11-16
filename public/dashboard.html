@@ -7,7 +7,7 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
@@ -43,12 +43,16 @@
 </head>
 <body class="bg-gradient-google font-roboto">
     <div class="flex h-screen">
-        <!-- Left Tab Bar -->
+        <!-- Left Sidebar -->
         <div class="w-1/6 bg-google-blue text-white flex flex-col items-center py-6">
             <div class="mb-6">
                 <h2 class="text-xl font-bold">Navigation</h2>
             </div>
             <nav class="flex flex-col space-y-4">
+                <button id="tab-profile" class="flex items-center space-x-2 hover:text-gray-300 focus:outline-none">
+                    <i class="fas fa-user-circle"></i>
+                    <span>My Profile</span>
+                </button>
                 <button id="tab-feed" class="flex items-center space-x-2 hover:text-gray-300 focus:outline-none">
                     <i class="fas fa-stream"></i>
                     <span>Post Feed</span>
@@ -69,6 +73,19 @@
         </div>
         <!-- Main Content -->
         <div class="w-5/6 overflow-y-auto">
+            <!-- Toggle Switch for Local/National Mode -->
+            <div class="flex justify-end p-4">
+                <label class="flex items-center">
+                    <span class="mr-2 text-gray-700">Local</span>
+                    <input type="checkbox" id="mode-switch" class="toggle-checkbox">
+                    <span class="toggle-label"></span>
+                    <span class="ml-2 text-gray-700">National</span>
+                </label>
+            </div>
+            <!-- Service Area Input (Visible in Local Mode) -->
+            <div id="service-area-container" class="p-4 hidden">
+                <input type="text" id="service-area-input" placeholder="Enter your service area..." class="w-full p-3 border rounded-full border-gray-300 focus:outline-none focus:border-google-blue">
+            </div>
             <!-- Post Feed Section -->
             <div id="post-feed-section" class="p-6">
                 <!-- Post Creation -->
@@ -84,12 +101,16 @@
             <!-- Blogs & Articles Section -->
             <div id="blogs-section" class="hidden p-6">
                 <h2 class="text-2xl font-bold text-google-blue mb-4">Blogs & Articles</h2>
-                <p>This section can display curated blogs and articles relevant to local businesses.</p>
+                <div id="blogs-content">
+                    <!-- Blogs will be dynamically inserted here -->
+                </div>
             </div>
             <!-- Local Citations Section -->
             <div id="citations-section" class="hidden p-6">
                 <h2 class="text-2xl font-bold text-google-blue mb-4">Local Citation Opportunities</h2>
-                <p>Here you can list mock opportunities or information for businesses to improve their online presence.</p>
+                <div id="citations-content">
+                    <!-- Citations will be dynamically inserted here -->
+                </div>
             </div>
             <!-- Business Finder Section -->
             <div id="map-section" class="hidden p-6">
