@@ -7,7 +7,7 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
@@ -51,8 +51,9 @@
                 </div>
             </div>
             <div class="mt-6 flex space-x-4">
-                <button class="bg-google-blue text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Connect</button>
-                <button class="bg-gray-300 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400">Message</button>
+                <button id="message-button" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400">Message</button>
+                <!-- Only show "Edit Profile" button if it's the user's own profile -->
+                <button id="edit-profile-button" class="bg-google-blue text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Edit Profile</button>
             </div>
         </div>
         <!-- Business Info and Posts -->
@@ -71,13 +72,14 @@
             </div>
             <!-- Right Column -->
             <div class="w-1/3">
-                <!-- Map Placeholder -->
+                <!-- Map -->
                 <div class="bg-white rounded-lg shadow p-6 mb-6">
                     <h2 class="text-2xl font-bold text-google-blue mb-4">Location</h2>
-                    <p class="text-center text-gray-600">[Map will be displayed here]</p>
+                    <!-- Google Maps Iframe -->
+                    <iframe id="profile-map" src="" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <!-- Editable Business Info -->
-                <div class="bg-white rounded-lg shadow p-6">
+                <!-- Editable Business Info (Only visible when editing) -->
+                <div id="edit-profile-section" class="bg-white rounded-lg shadow p-6 hidden">
                     <h2 class="text-2xl font-bold text-google-blue mb-4">Edit Business Info</h2>
                     <div class="mb-4">
                         <label class="block text-gray-700 mb-2" for="edit-business-name">Business Name</label>
@@ -103,6 +105,18 @@
                     <button id="save-profile" class="bg-google-blue text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Save</button>
                 </div>
             </div>
+        </div>
+        <!-- Mock Chat Box (Hidden by default) -->
+        <div id="chat-box" class="fixed bottom-0 right-0 mb-4 mr-4 bg-white rounded-lg shadow p-4 w-1/3 hidden">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold text-google-blue">Chat with [Business Name]</h2>
+                <button id="close-chat" class="text-gray-600 hover:text-gray-800">&times;</button>
+            </div>
+            <div class="bg-gray-100 h-48 mb-4 p-2 overflow-y-auto">
+                <!-- Chat messages will be displayed here -->
+                <p class="text-gray-600 text-center">This is a mock chat box.</p>
+            </div>
+            <input type="text" placeholder="Type a message..." class="w-full p-2 border rounded focus:outline-none focus:border-google-blue">
         </div>
     </div>
     <!-- Custom JS -->
