@@ -8,6 +8,7 @@ body {
 /* Post Card Hover Effect */
 .post-card {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background: linear-gradient(180deg, #FFFFFF, #F0F8FF);
 }
 .post-card:hover {
     transform: translateY(-5px);
@@ -40,4 +41,39 @@ body {
 /* Active Tab */
 .tab-active {
     display: block;
+}
+
+/* Toggle Switch */
+.toggle-checkbox {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 20px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+.toggle-checkbox:checked {
+    background: #4285F4;
+}
+.toggle-checkbox::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    background: #fff;
+    transition: 0.3s;
+}
+.toggle-checkbox:checked::before {
+    left: 21px;
+}
+
+/* Service Area Container */
+#service-area-container {
+    transition: all 0.3s ease-in-out;
 }
