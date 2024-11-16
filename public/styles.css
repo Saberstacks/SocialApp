@@ -31,3 +31,13 @@ body {
 .fade-in {
     animation: fadeIn 0.3s ease forwards;
 }
+
+/* Tab Content Hidden by Default */
+.tab-content {
+    display: none;
+}
+
+/* Active Tab */
+.tab-active {
+    display: block;
+}
