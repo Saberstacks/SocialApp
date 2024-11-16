@@ -7,7 +7,7 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM5gx5XlfmxfOvuS5pjAmW1vLvyjP3lUBN25bt1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
@@ -18,7 +18,7 @@
         @tailwind components;
         @tailwind utilities;
 
-        /* Custom color for Google Blue */
+        /* Custom colors */
         @layer utilities {
             .bg-google-blue {
                 background-color: #4285F4;
@@ -32,92 +32,76 @@
             .border-google-blue {
                 border-color: #4285F4;
             }
-            .hover\:text-google-blue:hover {
-                color: #4285F4;
+            .bg-gradient-google {
+                background: linear-gradient(180deg, #4285F4, #E3F2FD);
+            }
+            .border-light-blue {
+                border-color: #D1E3FC;
             }
         }
     </style>
 </head>
-<body class="bg-google-blue font-roboto">
-    <div class="container mx-auto p-4">
-        <!-- Main Content Container -->
-        <div class="bg-white rounded-lg shadow-lg p-6 flex">
-            <!-- Left Panel -->
-            <div class="w-3/4 pr-4 border-r border-gray-200">
-                <!-- Post Creation Section -->
+<body class="bg-gradient-google font-roboto">
+    <div class="flex h-screen">
+        <!-- Left Tab Bar -->
+        <div class="w-1/6 bg-google-blue text-white flex flex-col items-center py-6">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold">Navigation</h2>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <button id="tab-feed" class="flex items-center space-x-2 hover:text-gray-300 focus:outline-none">
+                    <i class="fas fa-stream"></i>
+                    <span>Post Feed</span>
+                </button>
+                <button id="tab-blogs" class="flex items-center space-x-2 hover:text-gray-300 focus:outline-none">
+                    <i class="fas fa-blog"></i>
+                    <span>Blogs & Articles</span>
+                </button>
+                <button id="tab-citations" class="flex items-center space-x-2 hover:text-gray-300 focus:outline-none">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Local Citations</span>
+                </button>
+                <button id="tab-map" class="flex items-center space-x-2 hover:text-gray-300 focus:outline-none">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Business Finder</span>
+                </button>
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div class="w-5/6 overflow-y-auto">
+            <!-- Post Feed Section -->
+            <div id="post-feed-section" class="p-6">
+                <!-- Post Creation -->
                 <div class="mb-6">
                     <input type="text" id="post-input" placeholder="What's happening in your business?" class="w-full p-3 border rounded-full border-gray-300 focus:outline-none focus:border-google-blue">
                     <button id="post-button" class="bg-google-blue text-white px-6 py-2 rounded-full mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Post</button>
                 </div>
-                <!-- Post Feed -->
+                <!-- Posts -->
                 <div id="post-feed">
                     <!-- Posts will be dynamically inserted here -->
                 </div>
             </div>
-            <!-- Right Panel -->
-            <div class="w-1/4 pl-4">
-                <!-- Profile Info -->
-                <div class="mb-6">
-                    <h2 class="text-2xl font-bold text-google-blue mb-4">Your Profile</h2>
-                    <p class="text-xl font-bold text-gray-800 mb-1" id="business-name">Bright Windows LLC</p>
-                    <p class="text-gray-600 mb-1" id="business-category-display">Window Cleaning</p>
-                    <p class="text-gray-600 mb-4">Brooklyn, NY</p>
-                    <!-- Editable Category -->
-                    <label class="block text-gray-700 mb-2" for="business-category">Category</label>
-                    <select id="business-category" class="w-full p-2 border rounded border-gray-300 focus:outline-none focus:border-google-blue">
-                        <option>Window Cleaning</option>
-                        <option>Bakery</option>
-                        <option>Lawn Care</option>
-                        <!-- Add more categories as needed -->
-                    </select>
-                </div>
-                <!-- Analytics -->
-                <div class="mb-6">
-                    <h2 class="text-2xl font-bold text-google-blue mb-4">Analytics</h2>
-                    <div class="mb-4">
-                        <p class="text-gray-800">Engagement Stats</p>
-                        <p class="text-gray-600">20 likes this week</p>
-                        <div class="w-full bg-gray-200 h-2 rounded-full mt-1">
-                            <div class="bg-google-blue h-2 rounded-full" style="width: 60%;"></div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <p class="text-gray-600">5 new connections</p>
-                        <div class="w-full bg-gray-200 h-2 rounded-full mt-1">
-                            <div class="bg-google-blue h-2 rounded-full" style="width: 25%;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="text-gray-600">12 profile visits today</p>
-                        <div class="w-full bg-gray-200 h-2 rounded-full mt-1">
-                            <div class="bg-google-blue h-2 rounded-full" style="width: 50%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Nearby Businesses -->
-                <div>
-                    <h2 class="text-2xl font-bold text-google-blue mb-4">Nearby Businesses</h2>
-                    <div class="space-y-4">
-                        <!-- Business Card -->
-                        <div class="bg-gray-50 rounded-lg p-4 shadow">
-                            <p class="text-lg font-bold text-gray-800">Smith's Cleaning Services</p>
-                            <p class="text-gray-600">Rating: 4.5 stars</p>
-                            <p class="text-gray-600">Brooklyn, NY</p>
-                            <button class="bg-google-blue text-white px-4 py-2 rounded-full mt-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Connect</button>
-                        </div>
-                        <!-- Business Card -->
-                        <div class="bg-gray-50 rounded-lg p-4 shadow">
-                            <p class="text-lg font-bold text-gray-800">Eco Shine</p>
-                            <p class="text-gray-600">Rating: 4.7 stars</p>
-                            <p class="text-gray-600">Queens, NY</p>
-                            <button class="bg-google-blue text-white px-4 py-2 rounded-full mt-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Connect</button>
-                        </div>
-                    </div>
+            <!-- Blogs & Articles Section -->
+            <div id="blogs-section" class="hidden p-6">
+                <h2 class="text-2xl font-bold text-google-blue mb-4">Blogs & Articles</h2>
+                <p>This section can display curated blogs and articles relevant to local businesses.</p>
+            </div>
+            <!-- Local Citations Section -->
+            <div id="citations-section" class="hidden p-6">
+                <h2 class="text-2xl font-bold text-google-blue mb-4">Local Citation Opportunities</h2>
+                <p>Here you can list mock opportunities or information for businesses to improve their online presence.</p>
+            </div>
+            <!-- Business Finder Section -->
+            <div id="map-section" class="hidden p-6">
+                <h2 class="text-2xl font-bold text-google-blue mb-4">Business Finder</h2>
+                <input type="text" placeholder="Search for businesses..." class="w-full p-3 border rounded-full border-gray-300 focus:outline-none focus:border-google-blue mb-4">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <!-- Map Placeholder -->
+                    <p class="text-center text-gray-600">[Map will be displayed here]</p>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
