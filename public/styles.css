@@ -5,10 +5,29 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Animate post cards on hover */
+/* Post Card Hover Effect */
 .post-card {
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .post-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Interactive Button Hover */
+.interactive-button {
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.interactive-button:hover {
+    color: #3367D6; /* Slightly darker blue */
+    transform: scale(1.05);
+}
+
+/* Smooth Fade-In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
 }
